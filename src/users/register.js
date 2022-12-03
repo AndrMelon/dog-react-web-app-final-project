@@ -4,6 +4,7 @@ import {registerThunk} from "./users-thunk";
 import {current} from "@reduxjs/toolkit";
 import {Navigate} from "react-router";
 
+//MIRAR SCHEMA FOR CONST
 const Register = () => {
     const {currentUser} = useSelector((state) => state.users)
     const [username, setUsername] = useState('alice')
@@ -19,12 +20,15 @@ const Register = () => {
 
     return(
         <>
-            <h1>Register</h1>
+            <h2>SIGN UP</h2>
+            <label> User Name :</label>  <br/>
             <input
                 onChange={(e) => setUsername(e.target.value)}
                 className="form-control"
                 placeholder="username"
                 value={username}/>
+
+            <label> Password :</label>  <br/>
             <input
                 onChange={(e) => setPassword(e.target.value)}
                 className="form-control"
@@ -34,8 +38,17 @@ const Register = () => {
             <button
                 className="btn btn-primary w-100"
                 onClick={handleRegisterBtn}>
-                Register
+                Sign Up
             </button>
+
+            {/*añadir una linea horizontal y espacio extra*/}
+
+            <a> Already have an account? </a><a href="/login"> LOG IN </a>
+
+
+
+
+
             {
                 currentUser &&
                 <h1>Welcome new user: {currentUser.username}</h1>

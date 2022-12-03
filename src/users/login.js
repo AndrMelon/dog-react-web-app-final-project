@@ -22,19 +22,29 @@ const Login = () => {
     }
     return(
         <>
-            <h1>Login</h1>
+            <h2>LOGIN</h2>
+            <label> Username :</label> <br/>
+
             <input
                 onChange={(e) => setUsername(e.target.value)}
                 className="form-control"
                 placeholder="username"
                 value={username}/>
+            <label> Password :</label>  <br/>
             <input
                 onChange={(e) => setPassword(e.target.value)}
                 className="form-control" placeholder="password" type="password" value={password}/>
-            <button
+
+            <input type="checkbox" value="REMEMBER" id="chkbox-remember" />
+            <label for="chkbox-remember"> Remember me?</label> <br/>
+
+    <button
                 className="btn btn-primary w-100"
                 onClick={handleLoginBtn}>Login</button>
+
+    <a> Need an account? </a><a href="/register">SIGN UP </a>
         </>
+
     )
 }
 export default Login
