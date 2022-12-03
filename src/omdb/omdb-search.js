@@ -5,7 +5,7 @@ import {userLikesMovieThunk} from "../likes/likes-thunks";
 import {Link} from "react-router-dom";
 
 const OmdbSearch = () => {
-    const [searchTerm, setSearchTerm] = useState('Avatar')
+    const [searchTerm, setSearchTerm] = useState('beagle')
     const {movies, loading} = useSelector((state) => state.omdb)
     const dispatch = useDispatch()
     useEffect(() => {
@@ -13,7 +13,7 @@ const OmdbSearch = () => {
     }, [])
     return (
         <>
-            <h1>Omdb Search</h1>
+            <h1>Breed Search 🐶</h1>
             <ul className="list-group">
                 <li className="list-group-item">
                     <button
@@ -38,7 +38,7 @@ const OmdbSearch = () => {
                                 }))
                             }} className="float-end bi bi-hand-thumbs-up"></i>
                             <i className="float-end bi bi-hand-thumbs-down me-2"></i>
-                            <img src={movie.Poster} height={50}/>
+                            <img src={movie} height={50}/>
                             <Link to={`/details/${movie.imdbID}`}>
                                 {movie.Title}
                             </Link>

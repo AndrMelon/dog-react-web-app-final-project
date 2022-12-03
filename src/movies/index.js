@@ -13,7 +13,7 @@ const Movies = () => {
     }, [])
     return(
         <>
-            <h1>Movies</h1>
+            <h1>Cute Dogs!</h1>
             {
                 currentUser &&
                 <h2>Welcome {currentUser.username} </h2>
