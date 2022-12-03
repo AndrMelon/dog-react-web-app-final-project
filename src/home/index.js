@@ -1,22 +1,24 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {createMoviesThunk, deleteMovieThunk, findAllMoviesThunk} from "./movies-thunks";
-import {userLikesMovieThunk} from "../likes/likes-thunks";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { createMoviesThunk, deleteMovieThunk } from "../movies/movies-thunks";
+import { getRandomDogsThunk } from "../omdb/omdb-thunks";
+import { userLikesMovieThunk } from "../likes/likes-thunks";
 
-const Movies = () => {
-    const {currentUser} = useSelector((state) => state.users)
-    const {movies} = useSelector((state) => state.movies)
-    const [movie, setMovie] = useState({title: 'New Movie'})
+const Home = () => {
+    const { currentUser } = useSelector((state) => state.users)
+    const { movies } = useSelector((state) => state.omdb)
+    const [movie, setMovie] = useState({ title: 'New Movie' })
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(findAllMoviesThunk())
+        dispatch(getRandomDogsThunk(3))
     }, [])
-    return(
+    return (
         <>
             <h1>Cute Dogs!</h1>
             {
                 currentUser &&
                 <h2>Welcome {currentUser.username} </h2>
+
             }
             <ul className="list-group">
                 <li className="list-group-item">
@@ -30,13 +32,14 @@ const Movies = () => {
                     <input
                         className="form-control w-75"
                         onChange={(e) =>
-                            setMovie({...movie, title: e.target.value})}
-                        value={movie.title}/>
+                            setMovie({ ...movie, title: e.target.value })}
+                        value={movie.title} />
                 </li>
                 {
                     movies.map((movie) =>
                         <li className="list-group-item"
                             key={movie._id}>
+
                             <i onClick={() => {
                                 dispatch(deleteMovieThunk(movie._id))
                             }}
@@ -48,9 +51,7 @@ const Movies = () => {
                                 }))
                             }} className="float-end bi bi-hand-thumbs-up me-2"></i>
                             <i className="float-end bi bi-hand-thumbs-down me-2"></i>
-
-
-                            {movie.title}
+                            <img src={movie} height={200} />
                         </li>
                     )
                 }
@@ -59,4 +60,4 @@ const Movies = () => {
     )
 }
 
-export default Movies;
+export default Home;

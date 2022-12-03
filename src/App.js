@@ -1,14 +1,14 @@
-import Movies from "./movies";
+import Home from "./home";
 import moviesReducer from "./movies/movies-reducer";
-import {configureStore} from "@reduxjs/toolkit";
-import {Provider} from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
 import omdbReducer from "./omdb/omdb-reducer";
 import OmdbSearch from "./omdb/omdb-search";
-import {likesReducer} from "./likes/likes-reducer";
+import { likesReducer } from "./likes/likes-reducer";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import {Routes, Route} from "react-router";
-import {BrowserRouter} from "react-router-dom";
+import { Routes, Route } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 import Navigation from "./navigation";
 import Users from "./users";
 import usersReducer from "./users/users-reducer";
@@ -39,24 +39,24 @@ function App() {
             <Provider store={store}>
                 <BrowserRouter>
                     <CurrentUser>
-                        <Navigation/>
+                        <Navigation />
                         <Routes>
-                            <Route index element={<Movies/>}/>
-                            <Route path="/search" element={<OmdbSearch/>}/>
+                            <Route index element={<Home />} />
+                            <Route path="/search" element={<OmdbSearch />} />
                             <Route path="/users" element={
                                 <ProtectedRoute>
-                                    <Users/>
+                                    <Users />
                                 </ProtectedRoute>
-                            }/>
-                            <Route path="/login" element={<Login/>}/>
-                            <Route path="/register" element={<Register/>}/>
+                            } />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
                             <Route path="/profile" element={
                                 <ProtectedRoute>
-                                    <Profile/>
+                                    <Profile />
                                 </ProtectedRoute>
-                            }/>
-                            <Route path="/details/:imdbID" element={<OmdbDetails/>}/>
-                            <Route path="/profile/:uid" element={<PublicProfile/>}/>
+                            } />
+                            <Route path="/details/:imdbID" element={<OmdbDetails />} />
+                            <Route path="/profile/:uid" element={<PublicProfile />} />
                         </Routes>
                     </CurrentUser>
                 </BrowserRouter>
