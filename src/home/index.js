@@ -40,10 +40,11 @@ const Home = () => {
                         <li className="list-group-item"
                             key={movie._id}>
 
+                            { currentUser &&
                             <i onClick={() => {
                                 dispatch(deleteMovieThunk(movie._id))
                             }}
-                                className="bi bi-trash float-end"></i>
+                                className="bi bi-trash float-end"></i> }
 
                             <i onClick={() => {
                                 dispatch(userLikesMovieThunk({

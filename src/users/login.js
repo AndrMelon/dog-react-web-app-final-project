@@ -3,10 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {loginThunk} from "./users-thunk";
 import {Navigate, useNavigate} from "react-router";
 
+<script src="../../vendors/bootstrap/js/bootstrap.min.js"></script>
+
 const Login = () => {
     const {currentUser} = useSelector((state) => state.users)
-    const [username, setUsername] = useState('alice')
-    const [password, setPassword] = useState('alice1234')
+    const [username, setUsername] = useState()
+    const [password, setPassword] = useState()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleLoginBtn = () => {
@@ -39,7 +41,7 @@ const Login = () => {
             <label for="chkbox-remember"> Remember me?</label> <br/>
 
     <button
-                className="btn btn-primary w-100"
+                className ="btn btn-primary w-100 "
                 onClick={handleLoginBtn}>Login</button>
 
     <a> Need an account? </a><a href="/register">SIGN UP </a>

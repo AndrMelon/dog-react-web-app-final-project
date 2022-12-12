@@ -12,7 +12,7 @@ const Profile = () => {
     }
     return(
         <>
-            <h1>Profile</h1>
+            <h1>My Profile</h1>
             {
                 currentUser &&
                 <h2>Welcome new user: {currentUser.username}</h2>

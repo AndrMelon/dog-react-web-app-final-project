@@ -5,8 +5,10 @@ import {
     loginThunk,
     logoutThunk,
     profileThunk,
-    registerThunk
+    registerThunk,
+    deleteUserThunk
 } from "./users-thunk";
+import {deleteMovieThunk} from "../movies/movies-thunks";
 
 const usersReducer = createSlice({
     name: 'users',
@@ -35,6 +37,12 @@ const usersReducer = createSlice({
         [findAllUsersThunk.fulfilled]: (state, action) => {
             state.users = action.payload
             state.loading = false
+        },
+        [deleteUserThunk.fulfilled]: (state, action) => {
+            // const midx = state.findIndex(m => m._id === action.payload)
+            state.users = state.users.filter(u => {
+                return u._id !== action.payload
+            })
         }
     }
 })
