@@ -15,8 +15,17 @@ const Profile = () => {
             <h1>My Profile</h1>
             {
                 currentUser &&
-                <h2>Welcome new user: {currentUser.username}</h2>
+                <h2>Welcome back: {currentUser.username}</h2>
             }
+
+            <h3>User's first name: {currentUser.firstName} </h3>
+            <h3>User's last name: {currentUser.lastName} </h3>
+            <h3>User's birthday: {currentUser.birthday} </h3>
+            <h3>User's email: {currentUser.email} </h3>
+
+
+
+
             <button
                 className="btn btn-danger"
                 onClick={handleLogoutBtn}>

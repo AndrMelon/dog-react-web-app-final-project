@@ -9,9 +9,15 @@ const Register = () => {
     const {currentUser} = useSelector((state) => state.users)
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
+    const [firstName, setFirstname] = useState('')
+    const [lastName, setLastname] = useState('')
+    const [birthday, setBirthday] = useState(new Date())
+    const [email, setEmail] = useState('')
+
+
     const dispatch = useDispatch()
     const handleRegisterBtn = () => {
-        dispatch(registerThunk({username, password}))
+        dispatch(registerThunk({username, password, firstName, lastName, birthday, email}))
     }
 
     if(currentUser) {
@@ -35,6 +41,37 @@ const Register = () => {
                 placeholder="password"
                 type="password"
                 value={password}/>
+
+            <label> First Name :</label>  <br/>
+            <input
+                onChange={(e) => setFirstname(e.target.value)}
+                className="form-control"
+                placeholder="First name"
+                value={firstName}/>
+
+
+            <label> Last Name :</label>  <br/>
+            <input
+                onChange={(e) => setLastname(e.target.value)}
+                className="form-control"
+                placeholder="Last name"
+                value={lastName}/>
+
+
+            <label> Date of Birth :</label>  <br/>
+            <input
+                onChange={(e) => setBirthday(e.target.valueAsDate)}
+                className="form-control"
+                type="date"
+                />
+
+            <label> Email :</label>  <br/>
+            <input
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-control"
+                placeholder="Email"
+                value={email}/>
+
             <button
                 className="btn btn-primary w-100"
                 onClick={handleRegisterBtn}>

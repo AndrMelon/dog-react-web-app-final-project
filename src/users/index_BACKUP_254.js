@@ -15,6 +15,7 @@ const Users = () => {
             <ul className="list-group">
                 {
                     users.map((user) =>
+<<<<<<< Updated upstream
                     <li key={user._id} className="list-group-item">
                         {user.username}>
                         { user &&
@@ -24,6 +25,17 @@ const Users = () => {
                                className="bi bi-trash float-end"></i> }
 
                     </li>
+=======
+
+
+                        <li
+                            key={user._id} className="list-group-item">
+                                {user.username}
+                            <a href="http://localhost:3000/profile/:uid"><button className= "btn btn-success float-end"> View User's Profile</button></a>
+
+                        </li>
+
+>>>>>>> Stashed changes
                     )
                 }
             </ul>
