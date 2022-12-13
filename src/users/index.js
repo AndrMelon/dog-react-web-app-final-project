@@ -16,12 +16,14 @@ const Users = () => {
                 {
                     users.map((user) =>
                     <li key={user._id} className="list-group-item">
-                        {user.username}>
+                        {user.username}
                         { user &&
                             <i onClick={() => {
                                 dispatch(deleteUserThunk(user._id))
                             }}
                                className="bi bi-trash float-end"></i> }
+
+                        <a className="btn btn-primary float-end" href="http://localhost:3000/profile/:uid" role="button">View User's Profile</a>
 
                     </li>
                     )

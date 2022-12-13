@@ -38,7 +38,7 @@ const OmdbSearch = () => {
                                 }))
                             }} className="float-end bi bi-hand-thumbs-up"></i>
                             <i className="float-end bi bi-hand-thumbs-down me-2"></i>
-                            <img src={movie} height={50}/>
+                            <img src={movie} height={200} width={200}/>
                             <Link to={`/details/${movie.imdbID}`}>
                                 {movie.Title}
                             </Link>
