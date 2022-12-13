@@ -60,7 +60,7 @@ const Register = () => {
 
             <label> Date of Birth :</label>  <br/>
             <input
-                onChange={(e) => setBirthday(e.target.valueAsDate)}
+                onChange={(e) => setBirthday(e.target.value)}
                 className="form-control"
                 type="date"
                 />

@@ -23,11 +23,14 @@ const Profile = () => {
                 currentUser &&
                 <h2>Welcome back: {currentUser.username}</h2>
             }
+
+
             <ul className="list-group">
                 <li className="list-group-item"><h4>User's first name: {currentUser.firstName}</h4></li>
                 <li className="list-group-item"><h4>User's last name: {currentUser.lastName}</h4></li>
                 <li className="list-group-item"><h4>User's birthday: {currentUser.birthday}</h4></li>
                 <li className="list-group-item"><h4>User's email: {currentUser.email}</h4></li>
+
 
 
             </ul>

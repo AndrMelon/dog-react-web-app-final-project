@@ -46,6 +46,9 @@ const OmdbSearch = () => {
                     )
                 }
             </ul>
+
+            // the pre is useless --> gives us the actual links beneath the photos --> should erase it
+
             <pre>
                 {JSON.stringify(movies, null, 2)}
             </pre>
