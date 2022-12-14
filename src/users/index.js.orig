@@ -15,13 +15,7 @@ const Users = () => {
             <ul className="list-group">
                 {
                     users.map((user) =>
-                    <li key={user._id} className="list-group-item">
-                        {user.username}
-                        { user &&
-                            <i onClick={() => {
-                                dispatch(deleteUserThunk(user._id))
-                            }}
-                               className="bi bi-trash float-end"></i> }
+<<<<<<< HEAD
                         <li key={user._id} className="list-group-item">
                             {user.username}
                             {user &&
@@ -30,9 +24,20 @@ const Users = () => {
                                 }}
                                     className="bi bi-trash float-end"></i>}
 
+                        </li>
+=======
+                    <li key={user._id} className="list-group-item">
+                        {user.username}
+                        { user &&
+                            <i onClick={() => {
+                                dispatch(deleteUserThunk(user._id))
+                            }}
+                               className="bi bi-trash float-end"></i> }
+
                         <a className="btn btn-primary float-end" href="http://localhost:3000/profile/:uid" role="button">View User's Profile</a>
 
                     </li>
+>>>>>>> 859930980d315c0cdf3b72c1499646ac9dda9e69
                     )
                 }
             </ul>

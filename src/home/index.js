@@ -52,7 +52,7 @@ const Home = () => {
                                 }))
                             }} className="float-end bi bi-hand-thumbs-up me-2"></i>
                             <i className="float-end bi bi-hand-thumbs-down me-2"></i>
-                            <img src={movie} height={200} />
+                            <img src={movie} height={200} width={200} />
                         </li>
                     )
                 }
