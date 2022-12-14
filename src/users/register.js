@@ -1,12 +1,11 @@
-import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {registerThunk} from "./users-thunk";
-import {current} from "@reduxjs/toolkit";
-import {Navigate} from "react-router";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerThunk } from "./users-thunk";
+import { Navigate } from "react-router";
 
 //MIRAR SCHEMA FOR CONST
 const Register = () => {
-    const {currentUser} = useSelector((state) => state.users)
+    const { currentUser } = useSelector((state) => state.users)
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
     const [firstName, setFirstname] = useState('')
@@ -17,60 +16,61 @@ const Register = () => {
 
     const dispatch = useDispatch()
     const handleRegisterBtn = () => {
-        dispatch(registerThunk({username, password, firstName, lastName, birthday, email}))
+        dispatch(registerThunk({ username, password, firstName, lastName, birthday, email }))
     }
 
-    if(currentUser) {
-        return (<Navigate to={'/profile'}/>)
+    if (currentUser) {
+        return (<Navigate to={'/profile'} />)
     }
 
-    return(
+    return (
         <>
             <h2>SIGN UP</h2>
-            <label> User Name :</label>  <br/>
+            <label> User Name :</label>  <br />
             <input
                 onChange={(e) => setUsername(e.target.value)}
                 className="form-control"
-                placeholder="username"
-                value={username}/>
+                placeholder="Username"
+                value={username} />
 
-            <label> Password :</label>  <br/>
+            <label> Password :</label>  <br />
             <input
                 onChange={(e) => setPassword(e.target.value)}
                 className="form-control"
-                placeholder="password"
+                placeholder="Password"
                 type="password"
-                value={password}/>
+                value={password} />
 
-            <label> First Name :</label>  <br/>
+            <label> First Name :</label>  <br />
             <input
                 onChange={(e) => setFirstname(e.target.value)}
                 className="form-control"
                 placeholder="First name"
-                value={firstName}/>
+                value={firstName} />
 
 
-            <label> Last Name :</label>  <br/>
+            <label> Last Name :</label>  <br />
             <input
                 onChange={(e) => setLastname(e.target.value)}
                 className="form-control"
                 placeholder="Last name"
-                value={lastName}/>
+                value={lastName} />
 
 
-            <label> Date of Birth :</label>  <br/>
+            <label> Date of Birth :</label>  <br />
             <input
-                onChange={(e) => setBirthday(e.target.valueAsDate)}
+                onChange={(e) => setBirthday(e.target.value)}
                 className="form-control"
                 type="date"
-                />
+                value={birthday}
+            />
 
-            <label> Email :</label>  <br/>
+            <label> Email :</label>  <br />
             <input
                 onChange={(e) => setEmail(e.target.value)}
                 className="form-control"
                 placeholder="Email"
-                value={email}/>
+                value={email} />
 
             <button
                 className="btn btn-primary w-100"
