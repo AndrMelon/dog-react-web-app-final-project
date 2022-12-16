@@ -3,7 +3,7 @@ import axios from "axios";
 const USER_API_URL = 'http://localhost:4000/users'
 const BASE_API_URL = 'http://localhost:4000'
 
-const api = axios.create({withCredentials: true});
+const api = axios.create({ withCredentials: true });
 
 export const findUserById = async (uid) => {
     const response = await api.get(`${USER_API_URL}/${uid}`)
@@ -40,10 +40,10 @@ export const createUser = () => {
 
 }
 
-export const deleteUser = async (mid) => {
-    const response = await axios.delete(`${BASE_API_URL}/users/${mid}`)
+export const deleteUser = async (uid) => {
+    const response = await axios.delete(`${BASE_API_URL}/users/${uid}`)
     const status = response.data
-    return mid;
+    return uid;
 }
 
 const updateUser = () => {

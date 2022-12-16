@@ -1,16 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { createMoviesThunk, deleteMovieThunk } from "../movies/movies-thunks";
-import { getRandomDogsThunk } from "../omdb/omdb-thunks";
-import { userLikesMovieThunk } from "../likes/likes-thunks";
+import { createDogsThunk, deleteDogThunk } from "../dogs/dogs-thunks";
+import { findAllDogsThunk } from "../dogs/dogs-thunks";
+import { userLikesDogThunk } from "../likes/likes-thunks";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const { currentUser } = useSelector((state) => state.users)
-    const { movies } = useSelector((state) => state.omdb)
-    const [movie, setMovie] = useState({ title: 'New Movie' })
+    const { dogs } = useSelector((state) => state.dogs)
+    // const [movie, setMovie] = useState({ title: 'New Movie' })
+    const [dog, setDog] = useState({ title: 'Add Dog' })
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getRandomDogsThunk(3))
+        dispatch(findAllDogsThunk())
     }, [])
     return (
         <>
@@ -21,38 +23,42 @@ const Home = () => {
 
             }
             <ul className="list-group">
-                <li className="list-group-item">
+                {/* <li className="list-group-item">
                     <button className="btn btn-success float-end" onClick={() => {
-                        dispatch(createMoviesThunk(
+                        dispatch(createDogsThunk(
                             {
-                                title: movie.title
+                                url: dogs
                             }
                         ))
                     }}>Create</button>
                     <input
                         className="form-control w-75"
                         onChange={(e) =>
-                            setMovie({ ...movie, title: e.target.value })}
-                        value={movie.title} />
-                </li>
+                            setDog({ ...dog, title: e.target.value })}
+                        value={dog.title} />
+                </li> */}
                 {
-                    movies.map((movie) =>
+                    dogs.map((dog) =>
                         <li className="list-group-item"
-                            key={movie._id}>
+                            key={dog._id}>
 
-                            { currentUser &&
-                            <i onClick={() => {
-                                dispatch(deleteMovieThunk(movie._id))
-                            }}
-                                className="bi bi-trash float-end"></i> }
+                            {currentUser &&
+                                <div>
+                                    {currentUser.role === 'ADMIN' && <i onClick={() => {
+                                        dispatch(deleteDogThunk(dog._id))
+                                    }}
+                                        className="bi bi-trash float-end"></i>}
+                                    <i onClick={() => {
+                                        dispatch(userLikesDogThunk({
+                                            uid: currentUser._id, did: dog._id
+                                        }))
+                                    }} className="float-end bi bi-hand-thumbs-up me-2"></i></div>
+                            }
 
-                            <i onClick={() => {
-                                dispatch(userLikesMovieThunk({
-                                    uid: 111, mid: movie._id//imdbID
-                                }))
-                            }} className="float-end bi bi-hand-thumbs-up me-2"></i>
-                            <i className="float-end bi bi-hand-thumbs-down me-2"></i>
-                            <img src={movie} height={200} width={200} />
+
+                            <Link to={`/details/${dog._id}`}>
+                                <img className="img-fluid" src={dog.url} height={200} width={200} />
+                            </Link>
                         </li>
                     )
                 }

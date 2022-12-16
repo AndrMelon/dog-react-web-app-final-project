@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { findMovieByImdbId, findMovieBySearchTerm, getRandomDogs } from "./omdb-service";
+import { findMovieByImdbId, findDogBySearchTerm, getRandomDogs } from "./dogceo-service";
 
-export const findMovieBySearchTermThunk = createAsyncThunk(
-    'findMovieBySearchTerm',
-    (term) => findMovieBySearchTerm(term)
+export const findDogBySearchTermThunk = createAsyncThunk(
+    'findDogBySearchTerm',
+    (term) => findDogBySearchTerm(term)
 )
 
 export const getRandomDogsThunk = createAsyncThunk(
-    'findMovieBySearchTerm',
+    'getRandomDogsThunk',
     (numDogs) => getRandomDogs(numDogs)
 )
 

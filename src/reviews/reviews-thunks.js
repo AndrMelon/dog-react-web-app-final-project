@@ -1,13 +1,13 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {createReview, findReviewsByAuthor, findReviewsByMovie} from "./reviews-service";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createReview, findReviewsByAuthor, findReviewsByDog } from "./reviews-service";
 
 export const createReviewThunk = createAsyncThunk(
     'createReview',
     async (review) => createReview(review)
 )
-export const findReviewsByMovieThunk = createAsyncThunk(
+export const findReviewsByDogThunk = createAsyncThunk(
     'findReviewsByMovieThunk',
-    async (imdbID) => findReviewsByMovie(imdbID)
+    async (did) => findReviewsByDog(did)
 
 )
 export const findReviewsByAuthorThunk = createAsyncThunk(

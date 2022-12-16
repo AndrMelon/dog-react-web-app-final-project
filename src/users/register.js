@@ -82,10 +82,6 @@ const Register = () => {
 
             <a> Already have an account? </a><a href="/login"> LOG IN </a>
 
-
-
-
-
             {
                 currentUser &&
                 <h1>Welcome new user: {currentUser.username}</h1>

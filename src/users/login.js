@@ -36,7 +36,7 @@ const Login = () => {
                 className="form-control" placeholder="Password" type="password" value={password} />
 
             <input type="checkbox" value="REMEMBER" id="chkbox-remember" />
-            <label for="chkbox-remember"> Remember me?</label> <br />
+            <label htmlFor="chkbox-remember"> Remember me?</label> <br />
 
             <button
                 className="btn btn-primary w-100"

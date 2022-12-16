@@ -1,9 +1,8 @@
 import Home from "./home";
-import moviesReducer from "./movies/movies-reducer";
+import dogCeoReducer from "./dogceo/dogceo-reducer";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import omdbReducer from "./omdb/omdb-reducer";
-import OmdbSearch from "./omdb/omdb-search";
+import DogCeoSearch from "./dogceo/dogceo-search";
 import { likesReducer } from "./likes/likes-reducer";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -17,15 +16,16 @@ import Register from "./users/register";
 import CurrentUser from "./users/current-user";
 import Profile from "./users/profile";
 import ProtectedRoute from "./users/protected-route";
-import OmdbDetails from "./omdb/omdb-details";
+import DogCeoDetails from "./dogceo/dogceo-details";
 import reviewsReducer from "./reviews/reviews-reducer";
 import PublicProfile from "./users/public-profile";
 import followsReducer from "./follows/follows-reducer";
+import dogsReducer from "./dogs/dogs-reducer";
 
 const store = configureStore({
     reducer: {
-        movies: moviesReducer,
-        omdb: omdbReducer,
+        dogs: dogsReducer,
+        dogCeo: dogCeoReducer,
         likes: likesReducer,
         users: usersReducer,
         reviews: reviewsReducer,
@@ -42,7 +42,7 @@ function App() {
                         <Navigation />
                         <Routes>
                             <Route index element={<Home />} />
-                            <Route path="/search" element={<OmdbSearch />} />
+                            <Route path="/search" element={<DogCeoSearch />} />
                             <Route path="/users" element={
                                 <ProtectedRoute>
                                     <Users />
@@ -55,7 +55,7 @@ function App() {
                                     <Profile />
                                 </ProtectedRoute>
                             } />
-                            <Route path="/details/:imdbID" element={<OmdbDetails />} />
+                            <Route path="/details/:did" element={<DogCeoDetails />} />
                             <Route path="/profile/:uid" element={<PublicProfile />} />
                         </Routes>
                     </CurrentUser>

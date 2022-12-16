@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import {
     findAllUsersThunk,
     findUserByIdThunk,
@@ -8,7 +8,6 @@ import {
     registerThunk,
     deleteUserThunk
 } from "./users-thunk";
-import {deleteMovieThunk} from "../movies/movies-thunks";
 
 const usersReducer = createSlice({
     name: 'users',
