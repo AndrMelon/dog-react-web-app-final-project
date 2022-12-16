@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { findMovieByImdbIdThunk, findDogBySearchTermThunk, getRandomDogsThunk } from "./dogceo-thunks";
+import { findDogBySearchTermThunk, getRandomDogsThunk } from "./dogceo-thunks";
 
 const initialState = {
     dogs: [],
@@ -27,9 +27,6 @@ const dogCeoReducer = createSlice({
             state.dogs = action.payload
 
         },
-        [findMovieByImdbIdThunk.fulfilled]: (state, action) => {
-            state.details = action.payload
-        }
     }
 })
 
