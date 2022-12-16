@@ -44,7 +44,7 @@ const Home = () => {
 
                             {currentUser &&
                                 <div>
-                                    {currentUser.role === 'ADMIN' && <i onClick={() => {
+                                    {currentUser && currentUser.role === 'ADMIN' && <i onClick={() => {
                                         dispatch(deleteDogThunk(dog._id))
                                     }}
                                         className="bi bi-trash float-end"></i>}

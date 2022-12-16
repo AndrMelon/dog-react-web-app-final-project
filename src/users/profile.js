@@ -1,22 +1,23 @@
-import {useDispatch, useSelector} from "react-redux";
-import {deleteUserThunk, logoutThunk, profileThunk} from "./users-thunk";
-import {useNavigate} from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteUserThunk, logoutThunk, profileThunk } from "./users-thunk";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+
 
 const Profile = () => {
     const navigate = useNavigate()
-    const {currentUser} = useSelector((state) => state.users)
+    const { currentUser } = useSelector((state) => state.users)
     const dispatch = useDispatch()
     const handleLogoutBtn = () => {
         dispatch(logoutThunk())
         navigate('/login')
     }
 
-    //have to edit this!!!
-    const handleEditProfile = () => {
-        dispatch(profileThunk())
-    }
+    // const handleEditProfile = () => {
+    //     dispatch(profileThunk())
+    // }
 
-    return(
+    return (
         <>
             <h1>My Profile</h1>
             {
@@ -36,19 +37,23 @@ const Profile = () => {
             </ul>
 
 
-            <br/><br/><br/>
+            <br /><br /><br />
             <button
                 className="btn btn-danger"
                 onClick={handleLogoutBtn}>
                 Logout
             </button>
 
+            <Link role="button" className="btn btn-primary float-end" to={`/profile/${currentUser._id}`}>
+                View Public Profile
+            </Link>
 
-            <button
+
+            {/* <button
                 className="btn btn-primary float-end"
                 onClick={handleEditProfile}>
                 Edit Profile
-            </button>
+            </button> */}
         </>
     )
 }

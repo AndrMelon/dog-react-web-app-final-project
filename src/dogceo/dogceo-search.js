@@ -57,7 +57,7 @@ const DogCeoSearch = () => {
                 {
                     dogs && dogs.map((dog) =>
                         <li className="list-group-item" key={dog}>
-                            <button className="btn btn-success float-end" onClick={() => {
+                            {currentUser && <button className="btn btn-success float-end" onClick={() => {
                                 const url = new URL(dog);
                                 const path = url.pathname.split("/");
                                 dispatch(createDogsThunk(
@@ -66,7 +66,7 @@ const DogCeoSearch = () => {
                                         url: dog
                                     }
                                 ))
-                            }}>Add dog</button>
+                            }}>Add dog</button>}
                             <img src={dog} className="img-fluid" height={200} width={300} />
                             <Link to={`/details/${dog}`}>
                                 {dog.url}
